@@ -1,5 +1,5 @@
 openai:
-  api_key: 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
+  api_key: sk-************************************************
   model: "text-davinci-003"
   parameters:
     suffix: null
