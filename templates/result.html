@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TERRY: The Easiest Resume Rewriter Yet - Results</title>
+    <style>
+      .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      pre {
+        white-space: pre-wrap;
+        text-align: left;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>TERRY: The Easiest Resume Rewriter Yet - Results</h1>
+      <h2>Rewritten Resume</h2>
+      <pre>{{ rewritten_resume }}</pre>
+      <h2>Cover Letter</h2>
+      <pre>{{ cover_letter }}</pre>
+      <form action="/" method="get">
+        <button type="submit" class="btn">Apply to Another Job</button>
+      </form>
+    </div>
+  </body>
+</html>
