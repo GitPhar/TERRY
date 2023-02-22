@@ -1,0 +1,4 @@
+Flask==2.2.3
+openai==0.26.5
+PyYAML==6.0
+regex==2022.10.31
