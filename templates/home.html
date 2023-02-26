@@ -1,65 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>TERRY: The Easiest Resume Rewriter Yet</title>
-    <style>
-      /* Center text */
-      body {
-        text-align: center;
-      }
-      
-      /* Set form width */
-      form {
-        width: 80%;
-        margin: 0 auto;
-      }
-      
-      /* Set label styles */
-      label {
-        display: block;
-        margin: 20px 0 5px;
-        text-align: left;
-        font-size: 20px;
-        font-weight: bold;
-      }
-      
-      /* Set textarea styles */
-      textarea {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        font-size: 16px;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-        min-height: 200px;
-      }
-      
-      /* Set button styles */
-      input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 20px;
-      }
-      
-      input[type="submit"]:hover {
-        background-color: #45a049;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>TERRY: The Easiest Resume Rewriter Yet</h1>
-    <p>Please enter your base resume and a job description to generate a rewritten resume and a cover letter tailored to the job description.</p>
-    <form action="/result" method="POST">
-      <label for="base_resume">Enter your base resume:</label>
-      <textarea id="base_resume" name="base_resume" rows="10" cols="50"></textarea>
-      <label for="job_description">Enter the job description:</label>
-      <textarea id="job_description" name="job_description" rows="10" cols="50"></textarea>
-      <input type="submit" value="Generate">
-    </form>
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>TERRY: The Easiest Resume Rewriter Yet</h1>
+  <p>Please enter your base resume and a job description to generate a rewritten resume and a cover letter tailored to the job description.</p>
+  <form method="POST" action="{{ url_for('result') }}">
+    <div class="form-group">
+      <label for="base_resume">Base Resume</label>
+      <textarea class="form-control" id="base_resume" name="base_resume" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="job_description">Job Description</label>
+      <textarea class="form-control" id="job_description" name="job_description" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="generate-btn">Generate</button>
+  </form>
+  <div id="loading-overlay">
+    <div id="loading-spinner"></div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    const generateBtn = document.querySelector('#generate-btn');
+    const loadingOverlay = document.querySelector('#loading-overlay');
+
+    generateBtn.addEventListener('click', () => {
+      loadingOverlay.style.display = 'block';
+    });
+  </script>
+{% endblock %}
