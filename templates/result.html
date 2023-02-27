@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+  <div class="row">
+    <div class="col">
+      <h2>Rewritten Resume:</h2>
+      <div class="result-content">{{ generated_resume }}</div>
+    </div>
+    <div class="col">
+      <h2>Cover Letter:</h2>
+      <div class="result-content">{{ generated_cover_letter }}</div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col text-center">
+      <form method="GET" action="{{ url_for('home') }}">
+        <button type="submit" class="btn btn-primary">Apply to Another Job</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block custom_css %}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.result-content {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+{% endblock %}

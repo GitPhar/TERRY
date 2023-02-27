@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loading.css') }}">
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loader"></div>
+        <h1>Loading...</h1>
+    </div>
+    <script type="text/javascript">
+        function checkProcessingStatus() {
+            fetch("{{ url_for('processing_status') }}")
+            .then(response => response.json())
+            .then(data => {
+                if (data.processing_complete) {
+                    window.location.href = "{{ url_for('get_result') }}";
+                } else {
+                    setTimeout(checkProcessingStatus, 1000);
+                }
+            });
+        }
+        checkProcessingStatus();
+    </script>
+</body>
+</html>

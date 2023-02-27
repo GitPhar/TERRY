@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>TERRY: The Easiest Resume Rewriter Yet</h1>
+  <p>Please enter your base resume and a job description to generate a rewritten resume and a cover letter tailored to the job description.</p>
+  <form method="POST" action="{{ url_for('result') }}">
+    <div class="form-group">
+      <label for="base_resume">Base Resume</label>
+      <textarea class="form-control" id="base_resume" name="base_resume" rows="5"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="job_description">Job Description</label>
+      <textarea class="form-control" id="job_description" name="job_description" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="generate-btn">Generate</button>
+  </form>
+  <div id="loading-overlay">
+    <div id="loading-spinner"></div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    const generateBtn = document.querySelector('#generate-btn');
+    const loadingOverlay = document.querySelector('#loading-overlay');
+
+    generateBtn.addEventListener('click', () => {
+      loadingOverlay.style.display = 'block';
+    });
+  </script>
+{% endblock %}
